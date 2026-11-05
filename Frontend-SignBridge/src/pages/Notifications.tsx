@@ -103,6 +103,7 @@ export default function Notifications() {
           <button
             key={f}
             onClick={() => setFiltro(f)}
+            aria-pressed={filtro === f}
             style={{
               padding: '6px 14px', borderRadius: 20, cursor: 'pointer',
               fontSize: '0.82rem', fontWeight: filtro === f ? 700 : 500,
@@ -131,7 +132,7 @@ export default function Notifications() {
 
       {!cargando && error && (
         <Card style={{ padding: '20px 24px', border: '1.5px solid #FECACA', background: 'rgba(229,83,75,0.13)' }}>
-          <p style={{ fontSize: '0.88rem', color: '#FFA8A2', margin: 0 }}>{error}</p>
+          <p role="alert" style={{ fontSize: '0.88rem', color: '#FFA8A2', margin: 0 }}>{error}</p>
         </Card>
       )}
 
@@ -194,6 +195,7 @@ export default function Notifications() {
                 {!a.read_at && (
                   <button
                     onClick={() => marcarUna(a)}
+                    aria-label={`Marcar como leída: ${a.title}`}
                     style={enlace}
                   >
                     ✓ Marcar como leída
@@ -201,6 +203,7 @@ export default function Notifications() {
                 )}
                 <button
                   onClick={() => eliminar(a)}
+                  aria-label={`Eliminar: ${a.title}`}
                   style={{ ...enlace, color: '#E5534B' }}
                 >
                   Eliminar
