@@ -12,12 +12,14 @@ Reglas:
 
 | Integrante (usuario GitHub) | S1 | S2 | S3 | S4 | S5 | S6 | S7 | S8 | S9 |
 |---|---|---|---|---|---|---|---|---|---|
-| @javierperez14 | E2E | API | | | | | | | |
-| @juan-soto350 | E2E | Front | | | | | | | |
-| @Sebas-p-s | E2E | BD | | | | | | | |
-| @Lincoln1986 | E2E | E2E (CI) | | | | | | | |
+| @javierperez14 | E2E | API | Front: TranslationHistory | | | | | | |
+| @juan-soto350 | E2E | Front | Front: Navbar + backend al 40 % | | | | | | |
+| @Sebas-p-s | E2E | BD | Front: Notifications | | | | | | |
+| @Lincoln1986 | E2E | E2E (CI) | Front: GoalProgressCard | | | | | | |
 
 > S2: Front, API y BD son distintas a la capa de S1. En un grupo de 4 alguien repite E2E: esta semana esa capa **monta el CI** (receta de CI) y además escribe sus 3 tests unitarios en cualquier capa. Por eso @Lincoln1986 la toma, y en S3 rota a una capa que no haya tenido.
+
+> S3: semana de **tema común**, todos en Front, cada uno con un componente distinto. El backend también debe llegar al 40 %: lo lleva quien tuvo Front en S2 (@juan-soto350), con tests unitarios como en la semana 2.
 
 ## Cobertura semanal
 
