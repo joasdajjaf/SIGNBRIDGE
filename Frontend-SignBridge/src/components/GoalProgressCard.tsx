@@ -58,6 +58,8 @@ function CartelMeta({ numero, onClose }: { numero: number; onClose: () => void }
       <div
         onClick={e => e.stopPropagation()}
         role="dialog"
+        aria-modal="true"
+        aria-labelledby="cartel-meta-titulo"
         aria-live="polite"
         style={{
           width: 'min(420px, 100%)', textAlign: 'center',
@@ -67,7 +69,7 @@ function CartelMeta({ numero, onClose }: { numero: number; onClose: () => void }
       >
         <div style={{ fontSize: '3rem', lineHeight: 1, marginBottom: 12 }}>🎉</div>
 
-        <h3 style={{
+        <h3 id="cartel-meta-titulo" style={{
           fontFamily: 'var(--font-display)', fontWeight: 800,
           fontSize: '1.35rem', color: 'var(--gray-800)', margin: '0 0 8px',
         }}>
@@ -152,10 +154,17 @@ export function GoalProgressCard() {
           </span>
         </div>
 
-        <div style={{
-          height: 10, borderRadius: 20, background: 'var(--gray-100)',
-          overflow: 'hidden', margin: '10px 0 8px',
-        }}>
+        <div
+          role="progressbar"
+          aria-label="Progreso hacia la próxima meta"
+          aria-valuemin={0}
+          aria-valuemax={datos.meta}
+          aria-valuenow={datos.en_ciclo_actual}
+          style={{
+            height: 10, borderRadius: 20, background: 'var(--gray-100)',
+            overflow: 'hidden', margin: '10px 0 8px',
+          }}
+        >
           <div style={{
             width: `${porcentaje}%`, height: '100%', borderRadius: 20,
             background: 'linear-gradient(90deg, var(--violet), var(--amber))',
@@ -168,7 +177,9 @@ export function GoalProgressCard() {
           <p style={{ fontSize: '0.82rem', color: 'var(--gray-400)', margin: 0 }}>
             {faltan === datos.meta
               ? `Traducí ${datos.meta} veces para completar tu próxima meta`
-              : `Te faltan ${faltan} traduccion${faltan !== 1 ? 'es' : ''} para la próxima meta`}
+              : faltan === 1
+                ? 'Te falta 1 traducción para la próxima meta'
+                : `Te faltan ${faltan} traducciones para la próxima meta`}
           </p>
 
           {datos.metas_completadas > 0 && (
