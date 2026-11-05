@@ -5,6 +5,7 @@ Usa aiosmtplib + Mailtrap (sandbox) o SMTP real según .env
 from __future__ import annotations
 
 import logging
+from html import escape
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -138,6 +139,9 @@ async def _send(to_email: str, subject: str, html_body: str) -> None:
 async def send_welcome_email(to_email: str, first_name: str) -> None:
     """Envía correo de bienvenida tras el registro exitoso."""
     dashboard_link = f"{settings.FRONTEND_URL}/dashboard"
+    # El nombre lo escribe la persona al registrarse y va dentro de HTML:
+    # se escapa para que no pueda inyectar etiquetas (igual que en el ticket).
+    first_name = escape(first_name)
 
     body = f"""
 <h2 style="margin:0 0 8px;font-size:22px;color:#111827;">
