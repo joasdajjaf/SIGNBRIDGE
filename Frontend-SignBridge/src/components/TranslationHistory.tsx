@@ -115,6 +115,7 @@ function SessionCard({
             onClick={handleDelete}
             disabled={eliminando}
             title="Eliminar del historial"
+            aria-label={`Eliminar "${session.generated_text || etiqueta}" del historial`}
             style={{
               background: 'none', border: 'none', cursor: eliminando ? 'default' : 'pointer',
               fontSize: '0.85rem', color: 'var(--gray-400)', padding: 4, lineHeight: 1,
@@ -146,6 +147,8 @@ function BuscadorHistorial({
         🔍
       </span>
       <input
+        type="search"
+        aria-label="Buscar en el historial"
         value={valor}
         onChange={e => onChange(e.target.value)}
         placeholder="Buscar por palabra (ej: gracias, hola...)"
@@ -162,6 +165,7 @@ function BuscadorHistorial({
         <button
           onClick={() => onChange('')}
           title="Limpiar búsqueda"
+          aria-label="Limpiar búsqueda"
           style={{
             position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)',
             background: 'none', border: 'none', cursor: 'pointer',
@@ -299,7 +303,7 @@ function TranslationHistory() {
               fontWeight: 800, fontSize: '1.2rem',
               fontFamily: 'var(--font-display)', color: 'var(--gray-800)',
             }}>
-              {totalTraducciones} traducción{totalTraducciones !== 1 ? 'es' : ''}
+              {totalTraducciones} {totalTraducciones !== 1 ? 'traducciones' : 'traducción'}
             </div>
             <div style={{ fontSize: '0.8rem', color: 'var(--gray-400)', marginTop: 2 }}>
               en {diasOrdenados.length} día{diasOrdenados.length !== 1 ? 's' : ''}
@@ -351,7 +355,7 @@ function TranslationHistory() {
                 📅 {formatDayLabel(dia.day)}
               </h3>
               <span style={{ fontSize: '0.75rem', color: 'var(--gray-400)' }}>
-                {dia.total} traducción{dia.total !== 1 ? 'es' : ''}
+                {dia.total} {dia.total !== 1 ? 'traducciones' : 'traducción'}
               </span>
             </div>
 

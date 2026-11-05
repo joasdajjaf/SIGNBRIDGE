@@ -16,6 +16,7 @@ export function Navbar() {
       <button
         key={to}
         onClick={() => navigate(to)}
+        aria-current={isActive ? 'page' : undefined}
         style={{
           background: 'none',
           border: 'none',
@@ -35,7 +36,7 @@ export function Navbar() {
   };
 
   return (
-    <nav style={{
+    <nav aria-label="Principal" style={{
       background: 'var(--white)',
       borderBottom: '1px solid var(--gray-100)',
       padding: '0 32px',
