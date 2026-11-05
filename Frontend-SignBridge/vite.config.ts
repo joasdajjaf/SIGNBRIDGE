@@ -28,10 +28,10 @@ export default defineConfig({
         'src/**/*.d.ts',       // solo tipos, no se ejecutan
       ],
       reporter: ['text', 'html'],
-      // Umbral de la semana 3 = max(30, real de S2) redondeado hacia abajo.
+      // Umbral de la semana 4 = max(40, real de S3) redondeado hacia abajo.
       // Si la cobertura baja de aquí, "pnpm test" falla. Solo puede subir:
       // ver docs/matriz-rotacion.md
-      thresholds: { lines: 34, statements: 32, functions: 27, branches: 27 },
+      thresholds: { lines: 40, statements: 39, functions: 35, branches: 34 },
     },
   },
 })
